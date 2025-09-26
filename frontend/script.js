@@ -1,3 +1,5 @@
+const API_BASE_URL = "http://54.147.189.248:8080/building";
+
 async function register() {
     var name = document.getElementById("name").value;
     var address = document.getElementById("address").value;
@@ -15,7 +17,7 @@ async function register() {
 }
 
 async function sendRegister(dto) {
-    var response = await fetch("http://54.147.189.248:8080/building", {
+    var response = await fetch(API_BASE_URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -31,8 +33,7 @@ async function sendRegister(dto) {
 }
 
 async function getData() {
-    console.log(buildingInfo);
-    var response = await fetch("http://54.147.189.248:8080/building", {
+    var response = await fetch(API_BASE_URL, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -43,7 +44,8 @@ async function getData() {
         return
     }
     var result = await response.json();
-    tableBuilding(result);
+    var buildings = result.data || result;
+    tableBuilding(buildings);
 }
 
 function tableBuilding(buildingInfo) {
@@ -57,7 +59,7 @@ function tableBuilding(buildingInfo) {
     buildingInfo.forEach(building => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${building.id}</td>
+            <td>${building.propertyId}</td>
             <td>${building.name}</td>
             <td>${building.address}</td>
             <td>${building.price}</td>
@@ -82,7 +84,7 @@ async function modify() {
         size: size,
         description: description
     };
-    var response = await fetch(`http://54.147.189.248:8080/building?id=${idBuilding}`, {
+    var response = await fetch(`${API_BASE_URL}?id=${idBuilding}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -98,12 +100,11 @@ async function modify() {
 
 async function deleteBuilding() {
     var idBuilding = document.getElementById("id-delete").value;
-    var response = await fetch("http://54.147.189.248:8080/building", {
+    var response = await fetch(`${API_BASE_URL}?id=${idBuilding}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ id: idBuilding })
+        }
     });
     if (!response.ok) {
         alert("Ocurrio un error inesperado al intentar eliminar la construcción, por favor intente mas tarde");
