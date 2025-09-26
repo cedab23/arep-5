@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  frontend:
+    build: ./frontend
+    image: cedab23/building-front
+    container_name: majima-front
+    ports:
+      - "5000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./app
+    image: cedab23/building-back
+    container_name: majima-back
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://34.233.134.46:3306/buildingdb
+      - SPRING_DATASOURCE_USERNAME=building
+      - SPRING_DATASOURCE_PASSWORD=maj123K.

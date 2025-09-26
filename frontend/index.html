@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Majima Construction</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+    <h1>Majima Construction</h1>
+    <div class="description">
+        <img src="majima.png" alt="majima ad" style="width:800px;height:800px;">
+        <audio controls>
+            <source src="majima anthem.mp3" type="audio/mpeg">
+            No fue posible reproducir el audio.
+        </audio>
+        <div class="textSpace">
+            <p>Bienvenidos a la pagina oficial de "Majima Construction", donde nos encargamos de construir la obra de
+                sus sueños <br>
+            </p>
+        </div>
+
+        <h2>Consulta nuestras construcciones</h2>
+        <button type="button" onclick="getData()">Ver construcciones actuales</button>
+        <table id="buildings" border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Precio</th>
+                    <th>Tamaño</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <h2>Agenda una construcción</h2>
+        <div style="width: 300px;" class="description">
+            <form>
+                <div class="description">
+                    <label for="name">Nombre: </label>
+                    <input type="text" id="name" name="Name">
+                </div>
+
+                <div class="description">
+                    <label for="address">Direccion: </label>
+                    <input type="text" id="address" name="Address">
+                </div>
+
+                <div class="description">
+                    <label for="price">Precio: </label>
+                    <input type="number" id="price" name="Price">
+                </div>
+
+                <div class="description">
+                    <label for="size">Tamaño: </label>
+                    <input type="number" id="size" name="Size">
+                </div>
+
+                <div class="description">
+                    <label for="description">Descripción: </label>
+                    <input type="text" id="description" name="Description">
+                </div>
+
+                <br>
+
+                <button type="button" onclick="register()">Registrar Construcción</button>
+
+            </form>
+
+        </div>
+
+        <h2>¿Hubo un error? Arregla la información de la construccion</h2>
+
+        <div style="width: 300px;" class="description">
+
+            <form>
+                <div class="description">
+                    <label for="id-edit">ID: </label>
+                    <input type="number" id="id-edit" name="Id">
+                </div>
+                <div class="description">
+                    <label for="name-edit">Nombre: </label>
+                    <input type="text" id="name-edit" name="Name">
+                </div>
+
+                <div class="description">
+                    <label for="address-edit">Direccion: </label>
+                    <input type="text" id="address-edit" name="Address">
+                </div>
+
+                <div class="description">
+                    <label for="price-edit">Precio: </label>
+                    <input type="number" id="price-edit" name="Price">
+                </div>
+
+                <div class="description">
+                    <label for="size-edit">Tamaño: </label>
+                    <input type="number" id="size-edit" name="Size">
+                </div>
+
+                <div class="description">
+                    <label for="description-edit">Descripción: </label>
+                    <input type="text" id="description-edit" name="Description">
+                </div>
+
+                <br>
+
+                <button type="button" onclick="modify()">Modificar Construcción</button>
+
+            </form>
+        </div>
+
+        <h2>¿Cambiaste de opinion? Elimina la construcción</h2>
+
+        <div style="width: 300px;" class="description">
+            <form>
+                <div class="description">
+                    <label for="id-delete">ID: </label>
+                    <input type="number" id="id-delete" name="Id">
+                </div>
+                <button type="button" onclick="deleteBuilding()">Eliminar Construcción</button>
+            </form>
+
+        </div>
+    </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
